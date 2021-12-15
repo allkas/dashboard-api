@@ -13,13 +13,16 @@ export abstract class BaseController {
     }
 
     public send<T>(res: Response, code: number, message: T) {
-        
-        res.type('aplication/json')
-        res.status(code).json(message)
+        res.type('aplication/json');
+        return res.status(code).json(message);
+    }
+
+    public ok<T>(res: Response, message: T) {
+        return this.send<T>(res, 200, message);
     }
 
     public created(res: Response) {
-        res.status(201);
+        return res.sendStatus(201);
     }
 
     protected bindRoutes(routes: IControllerRoute[]) {
