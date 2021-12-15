@@ -9,21 +9,21 @@ export class App {
     server: Server;
     port: number;
     logger: LoggerService;
-    UserController: UserController;
+    userController: UserController;
 
 
     constructor(
-        logger: LoggerService,
-        userController: UserController
+            logger: LoggerService,
+            userController: UserController
         ) {
-        this.app = express();
-        this.port = 8000;
-        this.logger = logger;
-        this.UserController = userController;
+            this.app = express();
+            this.port = 8000;
+            this.logger = logger;
+            this.userController = userController;
     }
     
     useRoutes() {
-        this.app.use('/users', this.UserController.router);
+        this.app.use('/users', this.userController.router);
     }
 
     public async init() {
